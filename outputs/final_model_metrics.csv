@@ -1,0 +1,2 @@
+Threshold,Accuracy,Precision,Recall,F1,True Negatives,False Positives,False Negatives,True Positives,Predicted Churn Count,ROC-AUC,PR-AUC,Actual Churners,Correctly Identified Churners,Missed Churners
+0.43,0.829,0.5670731707317073,0.6838235294117647,0.62,1379,213,129,279,492,0.8640175448320032,0.6868696761076715,408,279,129
