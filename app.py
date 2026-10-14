@@ -332,6 +332,21 @@ with tab2:
     )
     st.dataframe(segments, use_container_width=True)
 
+    st.subheader("SHAP Explainability")
+    st.caption(
+        "SHAP explains how features influence the XGBoost model's churn predictions. "
+        "Positive SHAP contributions push predictions toward churn; negative contributions push toward retention."
+    )
+
+    st.markdown("**SHAP Summary Plot**")
+    st.image(str(OUT / "shap_summary.png"))
+
+    st.markdown("**SHAP Waterfall Plot (Highest-Risk Customer)**")
+    st.image(str(OUT / "shap_waterfall_highrisk.png"))
+
+    st.markdown("**SHAP Dependence Plot**")
+    st.image(str(OUT / "shap_dependence_age.png"))
+
 with tab3:
     st.header("About This Project")
 
