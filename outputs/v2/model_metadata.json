@@ -1,0 +1,37 @@
+{
+  "model": "XGBoost",
+  "threshold": 0.27999999999999997,
+  "features": [
+    "credit_score",
+    "geography",
+    "gender",
+    "age",
+    "tenure",
+    "balance",
+    "num_of_products",
+    "has_cr_card",
+    "is_active_member",
+    "estimated_salary",
+    "satisfaction_score",
+    "card_type",
+    "points_earned"
+  ],
+  "training_rows": 8000,
+  "test_rows": 2000,
+  "selection_metric": "OOF average precision",
+  "dataset": "customer_churn_clean.csv",
+  "random_state": 42,
+  "test_metrics": {
+    "model": "XGBoost",
+    "threshold": 0.27999999999999997,
+    "average_precision": 0.7292617962988899,
+    "roc_auc": 0.8774047935757217,
+    "brier_score": 0.0976349413394928,
+    "accuracy": 0.832,
+    "precision": 0.5728744939271255,
+    "recall": 0.6936274509803921,
+    "f1": 0.6274944567627494,
+    "precision_at_10pct": 0.855,
+    "recall_at_10pct": 0.41911764705882354
+  }
+}
