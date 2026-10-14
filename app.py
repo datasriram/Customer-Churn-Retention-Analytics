@@ -332,20 +332,47 @@ with tab2:
     )
     st.dataframe(segments, use_container_width=True)
 
-    st.subheader("SHAP Explainability")
-    st.caption(
-        "SHAP explains how features influence the XGBoost model's churn predictions. "
-        "Positive SHAP contributions push predictions toward churn; negative contributions push toward retention."
+    
+    
+    st.subheader("SHAP Model Explainability")
+
+    st.info(
+        "SHAP explains how individual features influence "
+        "XGBoost churn predictions. Contributions are "
+        "expressed in log-odds, not probability points."
     )
 
-    st.markdown("**SHAP Summary Plot**")
-    st.image(str(OUT / "shap_summary.png"))
+    shap_charts = {
+        "Global SHAP Feature Importance": "shap_importance.png",
+        "SHAP Beeswarm Analysis": "shap_beeswarm.png",
+        "Individual Customer Waterfall": "shap_waterfall.png",
+        "Age Dependence": "shap_dependence_age.png",
+        "Number of Products Dependence":
+            "shap_dependence_num_of_products.png"
+    }
 
-    st.markdown("**SHAP Waterfall Plot (Highest-Risk Customer)**")
-    st.image(str(OUT / "shap_waterfall_highrisk.png"))
+    for title, filename in shap_charts.items():
+        chart_path = OUT / filename
 
-    st.markdown("**SHAP Dependence Plot**")
-    st.image(str(OUT / "shap_dependence_age.png"))
+        if chart_path.is_file():
+            st.markdown(f"### {title}")
+            st.image(str(chart_path))
+        else:
+            st.warning(f"Missing chart: {filename}")
+
+
+    for title, filename in shap_charts.items():
+        chart_path = OUT / filename
+
+        if chart_path.is_file():
+            st.markdown(f"**{title}**")
+            st.image(str(chart_path))
+        else:
+            st.warning(
+                f"{title} unavailable: {filename} "
+                "is missing from the deployment."
+            )
+
 
 with tab3:
     st.header("About This Project")
